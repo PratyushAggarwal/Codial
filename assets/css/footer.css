@@ -1,0 +1,9 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #c24881;
+  opacity: 0.7;
+  height: 2.7rem;
+  font-size: 2rem;
+  text-align: right; }

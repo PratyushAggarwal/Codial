@@ -1,0 +1,17 @@
+header {
+  width: 100%;
+  background-color: #7c69dd;
+  font-size: 2rem;
+  height: 2.7rem;
+  opacity: 0.7; }
+  header ul {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    list-style: none; }
+  header li {
+    margin-left: 20px;
+    margin-right: 10px; }
+    header li a {
+      text-decoration: none;
+      color: #120f1f; }

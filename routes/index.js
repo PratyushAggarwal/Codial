@@ -8,6 +8,6 @@ console.log(`express router is working`);
 router.get('/',homeController.home);
 router.get('/newacc',homeController.createacc); 
 router.use('/users',require('./users'));
-router.use('/posts',require('./post'));
+
 
 module.exports = router;
