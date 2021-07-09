@@ -10,7 +10,6 @@ const passportLocal = require('./config/passport_local_strategy');
 const MongoStore = require('connect-mongo')(session);
 const sass_middleware = require('node-sass-middleware');
 
-
 app.use(sass_middleware({
     src: './assets/scss',
     dest: './assets/css',
@@ -28,13 +27,8 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-
-
-
-
 app.set('view engine', 'ejs');
 app.set('views','./views');
-
 
 //mongo store is used to store the session cookie
 app.use(session({
