@@ -9,6 +9,8 @@ const passport = require('passport');
 const passportLocal = require('./config/passport_local_strategy');
 const MongoStore = require('connect-mongo')(session);
 const sass_middleware = require('node-sass-middleware');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 app.use(sass_middleware({
     src: './assets/scss',
@@ -53,6 +55,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMware.setflash);
 //use express router
 app.use('/',require('./routes'));
 

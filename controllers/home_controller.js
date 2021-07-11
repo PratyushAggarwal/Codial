@@ -1,24 +1,31 @@
 const post = require('../models/post');
-module.exports.home= function(req,res){
-    // console.log(req.cookies);
-    // res.cookie('user_id',25);
+const User = require('../models/user');
+module.exports.home=async function(req,res){
 
-    // post.find({},function(error,post){
-    //     console.log(post);
-    //     return res.render('home',{
-    //         title: "Codeial home",
-    //         post_list: post
-    //     });
-    // });
+    try{
+        let posts =await post.find({})
+        .sort('-createdAt')
+        .populate("user")
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
 
-    
-    //populate the user of each post
-    post.find({}).populate("user").exec(function(error,posts){
+        let users =await User.find({});
         return res.render('home',{
             title: "Codeial | home",
-            posts: posts
+            posts: posts,
+            all_users: users
         });
-    });
+    }catch(error){
+        console.log("error",error);
+        return;
+    }
+    
+    
+
     
 }
 module.exports.createacc = function(req,res){
