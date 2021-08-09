@@ -1,35 +1,48 @@
-const post = require('../models/post');
+const Post = require('../models/post');
 const User = require('../models/user');
-module.exports.home=async function(req,res){
+
+
+
+module.exports.home = async function(req, res){
 
     try{
-        let posts =await post.find({})
+        // CHANGE :: populate the likes of each post and comment
+        let posts = await Post.find({})
         .sort('-createdAt')
-        .populate("user")
+        .populate('user')
         .populate({
             path: 'comments',
             populate: {
                 path: 'user'
+            },
+            populate: {
+                path: 'likes'
             }
-        })
+        }).populate('comments')
+        .populate('likes');
 
-        let users =await User.find({});
-        return res.render('home',{
-            title: "Codeial | home",
-            posts: posts,
+    
+        let users = await User.find({});
+
+        return res.render('home', {
+            title: "Codeial | Home",
+            posts:  posts,
             all_users: users
         });
-    }catch(error){
-        console.log("error",error);
+
+    }catch(err){
+        console.log('Error', err);
         return;
     }
-    
-    
-
-    
-}
-module.exports.createacc = function(req,res){
-    return res.end('<h1>CREATE AN ACCOUNt</h1>')
+   
 }
 
-// module.exports.actionName = function(req,res){}
+// module.exports.actionName = function(req, res){}
+
+
+// using then
+// Post.find({}).populate('comments').then(function());
+
+// let posts = Post.find({}).populate('comments').exec();
+
+// posts.then()

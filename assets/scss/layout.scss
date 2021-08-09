@@ -1,27 +1,8 @@
 body{
     margin: 0;
-    color: rgb(18, 15, 31);
-    h1{
-        text-transform: uppercase;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
-        margin: auto;
-        margin-left: 9%;
-    }
+    /* text-align: center; */
 
-    #layout_main{
+    #layout-main{
         height: 100%;
     }
-    h1{
-        color: rgb(18, 15, 31);
-    }
-    form{
-        input{
-            display: block;
-            width: 400px;
-            padding: 2px;
-            margin: 6px;
-            font-size: 1.1rem;
-        }
-    }
-
 }
